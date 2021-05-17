@@ -5,9 +5,21 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1; //  Math.floor(Math.rando
 let score = 20;
 let highscore = 0;
 
-let messageDom = document.querySelector('.message');
-let scoreDom = document.querySelector('.score');
+let messageDom = document.querySelector('.message'); // still needed even with displayMessage
+
 let numberDom = document.querySelector('.number');
+
+const displayMessage = function (message) {
+  document.querySelector('.message').textContent = message;
+};
+
+const displayScore = function (score) {
+  document.querySelector('.score').textContent = score;
+};
+
+const backgroundColorBody = function (color) {
+  document.querySelector('body').style.backgroundColor = color;
+};
 
 const play = function () {
   const guess = Number(document.querySelector('.guess').value);
@@ -15,17 +27,17 @@ const play = function () {
   //*** if there is no input
   if (!guess) {
     // if the field is empty we get a 0 and 0 is a falsy value!
-    messageDom.textContent = 'No number! 😑';
-    messageDom.style.color = 'red';
+    displayMessage('No number! 😑'); // how to refactor with a function
+    messageDom.style.color = 'red'; // how to refactor with a normal variable
     messageDom.style.backgroundColor = 'yellow';
-    document.querySelector('body').style.backgroundColor = 'pink';
+    backgroundColorBody('pink');
 
-    // If player wins
+    // If player wins-
   } else if (guess === secretNumber) {
-    score = scoreDom.textContent;
+    score = document.querySelector('.score').textContent;
 
-    messageDom.textContent = 'Yes! 🎉';
-    document.querySelector('body').style.backgroundColor = 'red';
+    displayMessage('Yes! 🎉');
+    backgroundColorBody('red');
     numberDom.style.width = '30rem';
     numberDom.textContent = secretNumber;
     // highscore: if version - a ternary version in the dirty file
@@ -35,14 +47,13 @@ const play = function () {
     }
   } else if (guess !== secretNumber) {
     if (score > 1) {
-      messageDom.textContent =
-        guess > secretNumber ? 'Too high! 🚀' : 'Too low! 🕸';
+      displayMessage(guess > secretNumber ? 'Too high! 🚀' : 'Too low! 🕸');
       score--;
-      scoreDom.textContent = score;
+      displayScore(score);
     } else {
-      messageDom.textContent = 'You loose! 😱';
+      displayMessage('You loose! 😱');
 
-      scoreDom.textContent = 0;
+      displayScore(0);
     }
   }
 };
@@ -54,12 +65,12 @@ document.querySelector('.guess').addEventListener('keyup', function (event) {
 
 const reset = function () {
   score = 20;
-  scoreDom.textContent = score;
+  displayScore(score);
   secretNumber = Math.trunc(Math.random() * 20) + 1;
-  messageDom.textContent = 'Start guessing...';
+  displayMessage('Start guessing...');
   numberDom.textContent = '?';
   document.querySelector('.guess').value = '';
-  document.querySelector('body').style.backgroundColor = '#222';
+  backgroundColorBody('#222');
   numberDom.style.width = '15rem';
 };
 
