@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style-grid.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="normalize-grid.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="grid">
+      <header class="box a">
+        <h1>GUESS THE NUMBER!</h1>
+        <p class="between">* Between 1 and 20 *</p>
+      </header>
+      <main class="box b">
+        <!-- <h1>B</h1> -->
+        <div class="number">?</div>
+        <p class="message">Start guessing...</p>
+        <div style="display: flex">
+          <input type="number" class="guess" />
+          <button class="btn check">Check!</button>
+        </div>
+      </main>
+      <aside class="box c">
+        <h1>C</h1>
+
+        <p class="label-score">💯 Score: <span class="score">20</span></p>
+        <p class="label-highscore">
+          🥇 Highscore: <span class="highscore">0</span>
+        </p>
+      </aside>
+
+      <div class="box d">
+        <button class="btn again">Again!</button>
+      </div>
+      <div class="box e">E</div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

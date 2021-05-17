@@ -7,3 +7,5 @@ Online [HERE](https://552020.github.io/guess-my-number/)
 ## Technologies
 
 HTML, CSS, JS
+
+## Status
