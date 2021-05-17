@@ -42,15 +42,16 @@ const play = function () {
     document.querySelector('body').style.backgroundColor = 'red';
     document.querySelector('.number').style.width = '30rem';
     document.querySelector('.number').textContent = secretNumber;
-    // if (score > highscore) {
-    //   console.log('score 2 ' + score);
-    //   highscore = score;
-    //   console.log('highscore 2' + highscore);
-    //   document.querySelector('.highscore').textContent = score;
-    // }
-    score > highscore
-      ? (document.querySelector('.highscore').textContent = score)
-      : (document.querySelector('.highscore').textContent = highscore);
+    // HIGHSCORE IF VERSION
+    if (score > highscore) {
+      highscore = score;
+
+      document.querySelector('.highscore').textContent = highscore;
+    }
+    // HIGHSCORE TERNARY OPERATOR VERSION
+    // score > highscore
+    //   ? (document.querySelector('.highscore').textContent = score)
+    //   : (document.querySelector('.highscore').textContent = highscore);
     // When too high
   } else if (guess > secretNumber) {
     if (score > 1) {
