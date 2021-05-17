@@ -5,8 +5,6 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1; //  Math.floor(Math.rando
 let score = 20;
 let highscore = 0;
 
-document.querySelector('.score').value;
-
 const play = function () {
   const guess = Number(document.querySelector('.guess').value);
 
