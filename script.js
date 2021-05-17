@@ -45,28 +45,44 @@ const play = function () {
     // HIGHSCORE IF VERSION
     if (score > highscore) {
       highscore = score;
-
       document.querySelector('.highscore').textContent = highscore;
     }
     // HIGHSCORE TERNARY OPERATOR VERSION
     // score > highscore
     //   ? (document.querySelector('.highscore').textContent = score)
     //   : (document.querySelector('.highscore').textContent = highscore);
-    // When too high
-  } else if (guess > secretNumber) {
-    if (score > 1) {
-      document.querySelector('.message').textContent = 'Too high! 🚀';
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
-      document.querySelector('.message').textContent = 'You loose! 😱';
 
-      document.querySelector('.score').textContent = 0;
-    }
-    // When too low
-  } else if (guess < secretNumber) {
+    // REFACTOR ** START */
+    // if too high
+    //   } else if (guess > secretNumber) {
+    //     if (score > 1) {
+    //       document.querySelector('.message').textContent = 'Too high! 🚀';
+    //       score--;
+    //       document.querySelector('.score').textContent = score;
+    //     } else {
+    //       document.querySelector('.message').textContent = 'You loose! 😱';
+
+    //       document.querySelector('.score').textContent = 0;
+    //     }
+    //     // if too low
+    //   } else if (guess < secretNumber) {
+    //     if (score > 1) {
+    //       document.querySelector('.message').textContent = 'Too low! 🕸';
+    //       score--;
+    //       document.querySelector('.score').textContent = score;
+    //     } else {
+    //       document.querySelector('.message').textContent = 'You loose! 😱';
+
+    //       document.querySelector('.score').textContent = 0;
+    //     }
+    //   }
+
+    // REFACTOR NEW
+  } else if (guess > secretNumber || guess < secretNumber) {
     if (score > 1) {
-      document.querySelector('.message').textContent = 'Too low! 🕸';
+      guess > secretNumber
+        ? (document.querySelector('.message').textContent = 'Too high! 🚀')
+        : (document.querySelector('.message').textContent = 'Too low! 🕸');
       score--;
       document.querySelector('.score').textContent = score;
     } else {
@@ -75,6 +91,19 @@ const play = function () {
       document.querySelector('.score').textContent = 0;
     }
   }
+  // if too low
+  //   } else if (guess < secretNumber) {
+  //     if (score > 1) {
+  //       document.querySelector('.message').textContent = 'Too low! 🕸';
+  //       score--;
+  //       document.querySelector('.score').textContent = score;
+  //     } else {
+  //       document.querySelector('.message').textContent = 'You loose! 😱';
+
+  //       document.querySelector('.score').textContent = 0;
+  //     }
+  //   }
+  // REFACTOR ** END
 };
 
 document.querySelector('.check').addEventListener('click', play);
