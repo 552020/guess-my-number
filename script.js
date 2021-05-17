@@ -78,11 +78,10 @@ const play = function () {
     //   }
 
     // REFACTOR NEW
-  } else if (guess > secretNumber || guess < secretNumber) {
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      guess > secretNumber
-        ? (document.querySelector('.message').textContent = 'Too high! 🚀')
-        : (document.querySelector('.message').textContent = 'Too low! 🕸');
+      document.querySelector('.message').textContent =
+        guess > secretNumber ? 'Too high! 🚀' : 'Too low! 🕸';
       score--;
       document.querySelector('.score').textContent = score;
     } else {
